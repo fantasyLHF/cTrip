@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>仿携程移动端网页</title>
+    <link rel="icon" href="./favicon.ico">
+    <style>
+        @font-face {
+            font-family: 'icomoon';
+            src: url('fonts/icomoon.eot?w11wvr');
+            src: url('fonts/icomoon.eot?w11wvr#iefix') format('embedded-opentype'),
+                url('fonts/icomoon.ttf?w11wvr') format('truetype'),
+                url('fonts/icomoon.woff?w11wvr') format('woff'),
+                url('fonts/icomoon.svg?w11wvr#icomoon') format('svg');
+            font-weight: normal;
+            font-style: normal;
+            font-display: block;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background-color: #fafafc;
+        }
+
+        .page {
+            max-width: 540px;
+            margin: 0 auto;
+        }
+
+        .header {
+            height: 323px;
+            background-image: url(./images/banner01.jpg);
+            background-repeat: no-repeat;
+            background-size: 100% auto;
+            border-bottom-left-radius: 60px;
+            border-bottom-right-radius: 60px;
+        }
+
+        .search {
+            max-width: 516px;
+            margin: 0 auto;
+            display: flex;
+        }
+
+        .search>div:nth-child(1) {
+            flex: 1;
+            padding-top: 8px;
+            position: relative;
+        }
+
+        .search>div:nth-child(1)>input {
+            width: 100%;
+            height: 28px;
+            border-radius: 20px;
+            border: none;
+            outline: none;
+            text-indent: 3em;
+        }
+
+        .search>div:nth-child(1) span {
+            position: absolute;
+            height: 20px;
+            width: 20px;
+            background: url(./images/home-common.png) 0 0;
+            background-size: 25px auto;
+            left: 10px;
+            top: 13px;
+        }
+
+        .search>div:nth-child(2) {
+            width: 42px;
+        }
+
+        .search>div:nth-child(2) p:nth-child(1) {
+            margin-top: 4px;
+            margin-left: 8px;
+            height: 25px;
+            width: 25px;
+            background: url(./images/home-common.png) 0 -43px;
+            /* background-color: #000; */
+            background-size: 25px auto;
+        }
+
+        .search>div:nth-child(2) p:nth-child(2) {
+            margin-left: 8px;
+            max-width: 25px;
+            text-align: center;
+            font-size: 12px;
+            color: #fff;
+        }
+
+        .header .select {
+            height: 65px;
+            max-width: 516px;
+            background-color: #fff;
+            margin: 226px auto 0;
+            border-radius: 20px;
+            display: flex;
+        }
+
+        .header .select>div {
+            flex: 1;
+            margin: 0 15px;
+        }
+
+        .header .select>div div:nth-child(1) {
+            height: 40px;
+            max-width: 35px;
+            margin: 5px auto 0;
+        }
+
+
+
+        .header .select>div:nth-child(1) div:nth-child(1) {
+            background: url(./images/home-fivemain.png) 0 0;
+            background-size: 40px auto;
+            background-repeat: no-repeat;
+        }
+
+        .header .select>div:nth-child(2) div:nth-child(1) {
+            background: url(./images/home-fivemain.png) 0 -40px;
+            background-size: 40px auto;
+            background-repeat: no-repeat;
+        }
+
+        .header .select>div:nth-child(3) div:nth-child(1) {
+            background: url(./images/home-fivemain.png) 0 -80px;
+            background-size: 40px auto;
+            background-repeat: no-repeat;
+        }
+
+        .header .select>div:nth-child(4) div:nth-child(1) {
+            background: url(./images/home-fivemain.png) 0 -120px;
+            background-size: 40px auto;
+            background-repeat: no-repeat;
+        }
+
+        .header .select>div:nth-child(5) div:nth-child(1) {
+            background: url(./images/home-fivemain.png) 0 -160px;
+            background-size: 40px auto;
+            background-repeat: no-repeat;
+        }
+
+        .header .select>div div:nth-child(2) {
+            text-align: center;
+            font-size: 12px;
+        }
+
+        .gradient {
+            height: 198px;
+            max-width: 516px;
+            border-radius: 10px;
+            margin: 25px auto 0;
+            overflow: hidden;
+        }
+
+        .gradient>div {
+            height: 65px;
+            display: flex;
+            border-bottom: 1px solid #fff;
+            font-size: 16px;
+        }
+
+        .gradient>div:nth-child(1) {
+            background: linear-gradient(to right, red, orange, yellow);
+        }
+
+        .gradient>div:nth-child(2) {
+            background: linear-gradient(to right, rgb(0, 26, 255), rgb(145, 135, 235), rgb(145, 135, 255));
+        }
+
+        .gradient>div:nth-child(3) {
+            background: linear-gradient(to right, rgb(51, 128, 0), rgb(144, 238, 164), rgb(142, 222, 155));
+        }
+
+        .gradient>div>div:nth-child(1) {
+            flex: 3;
+            background-color: red;
+            color: #fff;
+            line-height: 65px;
+            text-indent: 1em;
+        }
+
+        .gradient>div>div:nth-child(2) {
+            flex: 2;
+            border-left: 1px solid #fff;
+            border-right: 1px solid #fff;
+            color: #fff;
+            line-height: 65px;
+            text-align: center;
+        }
+
+        .gradient>div>div:nth-child(3) {
+            flex: 2;
+            color: #fff;
+            line-height: 65px;
+            text-align: center;
+        }
+
+        .gradient>div>div:nth-child(4) {
+            flex: 2;
+            border-left: 1px solid #fff;
+            color: #fff;
+            line-height: 65px;
+            text-align: center;
+        }
+
+        .gradient>div:nth-child(1)>div:nth-child(1) {
+            flex: 3;
+            background: url(./images/grid-nav-items-hotel.png);
+            background-repeat: no-repeat;
+            background-size: 73px auto;
+            background-position: right bottom;
+        }
+
+        .gradient>div:nth-child(1)>div:nth-child(2) {
+            flex: 2;
+            background: url(./images/grid-nav-items-minsu.png);
+            background-repeat: no-repeat;
+            background-size: 33px auto;
+            background-position: left bottom;
+
+        }
+
+        .gradient>div:nth-child(1)>div:nth-child(3) {
+            flex: 4;
+            background: url(./images/grid-nav-items-hot.png);
+            background-size: 100% 100%;
+        }
+
+        .gradient>div:nth-child(2)>div:nth-child(1) {
+            background: url(./images/grid-nav-items-flight.png);
+            background-repeat: no-repeat;
+            background-size: 73px auto;
+            background-position: right bottom;
+
+        }
+
+        .gradient>div:nth-child(2)>div:nth-child(2) {
+            background: url(./images/grid-nav-items-train.png);
+            background-repeat: no-repeat;
+            background-size: 33px auto;
+            background-position: left bottom;
+
+        }
+
+        .gradient>div:nth-child(3)>div:nth-child(1) {
+            background: url(./images/grid-nav-items-travel.png);
+            background-repeat: no-repeat;
+            background-size: 73px auto;
+            background-position: right bottom;
+
+        }
+
+        .gradient>div:nth-child(3)>div:nth-child(2) {
+            background: url(./images/grid-nav-items-dingzhi.png);
+            background-repeat: no-repeat;
+            background-size: 43px auto;
+            background-position: left bottom;
+
+        }
+
+        .little {
+            max-width: 516px;
+            height: 122px;
+            display: flex;
+            flex-direction: column;
+            margin: 10px auto 0;
+        }
+
+        .little .row {
+            flex: 1;
+            display: flex;
+        }
+
+        .little .row>div {
+            flex: 1;
+        }
+
+        .row .goods div:nth-child(2) {
+            font-size: 12px;
+            text-align: center;
+        }
+
+        .row:nth-child(1) .goods:nth-child(1) div:first-child {
+            height: 28px;
+            width: 28px;
+            margin: 0 auto;
+            background: url(./images/un_ico_subnav.png);
+            background-size: 28px auto;
+            background-repeat: no-repeat;
+        }
+
+        .row:nth-child(1) .goods:nth-child(2) div:first-child {
+            height: 28px;
+            width: 28px;
+            margin: 0 auto;
+            background: url(./images/un_ico_subnav.png) 0 -28px;
+            background-size: 28px auto;
+            background-repeat: no-repeat;
+        }
+
+        .row:nth-child(1) .goods:nth-child(3) div:first-child {
+            height: 28px;
+            width: 28px;
+            margin: 0 auto;
+            background: url(./images/un_ico_subnav.png) 0 -56px;
+            background-size: 28px auto;
+            background-repeat: no-repeat;
+        }
+
+        .row:nth-child(1) .goods:nth-child(4) div:first-child {
+            height: 28px;
+            width: 28px;
+            margin: 0 auto;
+            background: url(./images/un_ico_subnav.png) 0 -84px;
+            background-size: 28px auto;
+            background-repeat: no-repeat;
+        }
+
+        .row:nth-child(1) .goods:nth-child(5) div:first-child {
+            height: 28px;
+            width: 28px;
+            margin: 0 auto;
+            background: url(./images/un_ico_subnav.png) 0 -112px;
+            background-size: 28px auto;
+            background-repeat: no-repeat;
+        }
+
+        .row:nth-child(2) .goods:nth-child(1) div:first-child {
+            height: 28px;
+            width: 28px;
+            margin: 0 auto;
+            background: url(./images/un_ico_subnav.png) 0 -140px;
+            background-size: 28px auto;
+            background-repeat: no-repeat;
+        }
+
+        .row:nth-child(2) .goods:nth-child(2) div:first-child {
+            height: 28px;
+            width: 28px;
+            margin: 0 auto;
+            background: url(./images/un_ico_subnav.png) 0 -168px;
+            background-size: 28px auto;
+            background-repeat: no-repeat;
+        }
+
+        .row:nth-child(2) .goods:nth-child(3) div:first-child {
+            height: 28px;
+            width: 28px;
+            margin: 0 auto;
+            background: url(./images/un_ico_subnav.png) 0 -196px;
+            background-size: 28px auto;
+            background-repeat: no-repeat;
+        }
+
+        .row:nth-child(2) .goods:nth-child(4) div:first-child {
+            height: 28px;
+            width: 28px;
+            margin: 0 auto;
+            background: url(./images/un_ico_subnav.png) 0 -224px;
+            background-size: 28px auto;
+            background-repeat: no-repeat;
+        }
+
+        .row:nth-child(2) .goods:nth-child(5) div:first-child {
+            height: 28px;
+            width: 28px;
+            margin: 0 auto;
+            background: url(./images/un_ico_subnav.png) 0 -252px;
+            background-size: 28px auto;
+            background-repeat: no-repeat;
+        }
+
+        .adv {
+            display: flex;
+        }
+
+        .adv div {
+            flex: 1;
+            height: auto;
+
+        }
+
+        .adv div:first-child {
+            margin-right: 2px;
+        }
+
+        .adv div img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .footer {
+            color: gray;
+            background-color: #fff;
+            height: 60px;
+            border-top: 1px solid gray;
+            border-bottom: 1px solid gray;
+            display: flex;
+        }
+
+        .footer>div {
+            flex: 1;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        .footer>div>div:first-child {
+            font-family: 'icomoon';
+            font-size: 24px;
+            padding: 5px;
+        }
+
+        .theF {
+            max-width: 226px;
+            display: flex;
+            margin: 10px auto 0;
+        }
+
+        .theF>div {
+            flex: 1;
+            text-align: center;
+            font-size: 12px;
+            border-right: 1px solid gray;
+        }
+
+        .theF>div:last-child {
+            border-right: 0;
+        }
+
+        .last {
+            max-width: 226px;
+            height: 12px;
+            margin: 10px auto;
+            text-align: center;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <div class="header">
+            <div class="search">
+                <div>
+                    <span></span>
+                    <input type="text" name="" id="" placeholder="搜索：目的地/酒店/景点/航班号">
+                </div>
+                <div>
+                    <p></p>
+                    <p>我的</p>
+                </div>
+            </div>
+            <div class="select">
+                <div>
+                    <div></div>
+                    <div>攻略·景点</div>
+                </div>
+                <div>
+                    <div></div>
+                    <div>门票·玩乐</div>
+                </div>
+                <div>
+                    <div></div>
+                    <div>美食林</div>
+                </div>
+                <div>
+                    <div></div>
+                    <div>周边游</div>
+                </div>
+                <div>
+                    <div></div>
+                    <div>一日游</div>
+                </div>
+            </div>
+        </div>
+        <div class="gradient">
+            <div>
+                <div>酒店</div>
+                <div>民宿·客栈</div>
+                <div>特价·爆款</div>
+            </div>
+            <div>
+                <div>机票</div>
+                <div>火车票</div>
+                <div>汽车·船票</div>
+                <div>专车·出租车</div>
+            </div>
+            <div>
+                <div>旅游</div>
+                <div>高铁游</div>
+                <div>邮轮游</div>
+                <div>定制游</div>
+            </div>
+        </div>
+        <div class="little">
+            <div class="row">
+                <div class="goods">
+                    <div></div>
+                    <div>自由行</div>
+                </div>
+                <div class="goods">
+                    <div></div>
+                    <div>WiFi电话卡</div>
+                </div>
+                <div class="goods">
+                    <div></div>
+                    <div>保险·签证</div>
+                </div>
+                <div class="goods">
+                    <div></div>
+                    <div>换钞·购物</div>
+                </div>
+                <div class="goods">
+                    <div></div>
+                    <div>当地向导</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="goods">
+                    <div></div>
+                    <div>特价机票</div>
+                </div>
+                <div class="goods">
+                    <div></div>
+                    <div>礼品卡</div>
+                </div>
+                <div class="goods">
+                    <div></div>
+                    <div>申卡·借钱</div>
+                </div>
+                <div class="goods">
+                    <div></div>
+                    <div>旅拍</div>
+                </div>
+                <div class="goods">
+                    <div></div>
+                    <div>更多</div>
+                </div>
+            </div>
+        </div>
+        <div class="adv">
+            <div>
+                <img src="./images/salesImg01.png" alt="">
+            </div>
+            <div>
+                <img src="./images/salesImg02.png" alt="">
+            </div>
+
+        </div>
+        <div class="footer">
+            <div>
+                <div></div>
+                <div>电话预定</div>
+            </div>
+            <div>
+                <div></div>
+                <div>下载客户端</div>
+            </div>
+            <div>
+                <div></div>
+                <div>我的</div>
+            </div>
+        </div>
+        <div class="theF">
+            <div>网站地图</div>
+            <div>Language</div>
+            <div>电脑版</div>
+        </div>
+        <div class="last">2020携程旅行 | 沪ICP备08023580号</div>
+    </div>
+
+</body>
+
+</html>
